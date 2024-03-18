@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 
+/// </summary>
+
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D rb;
@@ -9,27 +13,27 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        randomKeyCode = (KeyCode)Random.Range((int)KeyCode.A, (int)KeyCode.Z); //ランダムなキーを設定
+        randomKeyCode = (KeyCode)Random.Range((int)KeyCode.A, (int)KeyCode.Z); //?????_?????L?[??????
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(randomKeyCode); //ランダムなキー表示
+        Debug.Log(randomKeyCode); //?????_?????L?[?\??
 
-        rb = this.GetComponent<Rigidbody2D>(); // Rigidbody2D取得
+        rb = this.GetComponent<Rigidbody2D>(); // Rigidbody2D????
 
-        Transform myTransform = this.transform; //transformを取得
-        myTransform.Translate(0.05f, 0.0f, 0.0f, Space.World); //現在の座標からのX座標を1ずつ加算して移動
+        Transform myTransform = this.transform; //transform??????
+        myTransform.Translate(0.01f, 0.0f, 0.0f, Space.World); //?????????W??????X???W??1???????Z????????
     }
-    private void OnCollisionStay2D(Collision2D collision) //Playerが地面についていたら
+    private void OnCollisionStay2D(Collision2D collision) //Player???n????????????????
     {
-        Debug.Log("touch"); //当たった判定
+        Debug.Log("touch"); //????????????
 
-        if (Input.GetKeyDown(randomKeyCode)) //もしランダムなキーを押したら
+        if (Input.GetKeyDown(randomKeyCode)) //?????????_?????L?[??????????
         {
-            Vector3 jump = new Vector2(0.0f, 30.0f); // ジャンプの大きさ設定
-            rb.AddForce(jump); // ジャンプ実行
+            Vector3 jump = new Vector2(0.0f, 30.0f); // ?W?????v????????????
+            rb.AddForce(jump); // ?W?????v???s
         }
     }
 }
