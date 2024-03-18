@@ -3,7 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// 
+/// プレイヤーの操作全般を司る
+/// キー設定は全部ランダムになる予定
+/// プレイヤーの機能
+/// ・ジャンプ
+/// ・スニーク
 /// </summary>
 
 public class PlayerController : MonoBehaviour
@@ -22,9 +26,6 @@ public class PlayerController : MonoBehaviour
         Debug.Log(randomKeyCode); //?????_?????L?[?\??
 
         rb = this.GetComponent<Rigidbody2D>(); // Rigidbody2D????
-
-        Transform myTransform = this.transform; //transform??????
-        myTransform.Translate(0.01f, 0.0f, 0.0f, Space.World); //transform変更
     }
     private void OnCollisionStay2D(Collision2D collision) //Player???n????????????????
     {
