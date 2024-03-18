@@ -5,15 +5,18 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D rb;
+    private KeyCode randomKeyCode;
     // Start is called before the first frame update
     void Start()
     {
-
+        randomKeyCode = (KeyCode)Random.Range((int)KeyCode.A, (int)KeyCode.Z); //ランダムなキーを設定
     }
 
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(randomKeyCode); //ランダムなキー表示
+
         rb = this.GetComponent<Rigidbody2D>(); // Rigidbody2D取得
 
         Transform myTransform = this.transform; //transformを取得
@@ -23,7 +26,7 @@ public class PlayerController : MonoBehaviour
     {
         Debug.Log("touch"); //当たった判定
 
-        if (Input.GetKeyDown(KeyCode.Space)) //もしスペースを押したら
+        if (Input.GetKeyDown(randomKeyCode)) //もしランダムなキーを押したら
         {
             Vector3 jump = new Vector2(0.0f, 30.0f); // ジャンプの大きさ設定
             rb.AddForce(jump); // ジャンプ実行
