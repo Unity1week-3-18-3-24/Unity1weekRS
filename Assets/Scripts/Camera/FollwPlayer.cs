@@ -13,7 +13,7 @@ public class FollowPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Transform myTransform = this.transform; //transform‚ğæ“¾
-        myTransform.Translate(0.05f, 0.0f, 0.0f, Space.World); //Œ»İ‚ÌÀ•W‚©‚ç‚ÌXÀ•W‚ğ1‚¸‚Â‰ÁZ‚µ‚ÄˆÚ“®
+        Transform myTransform = this.transform; //transform??????
+        myTransform.Translate(0.01f, 0.0f, 0.0f, Space.World); //?????????W??????X???W??1???????Z????????
     }
 }
