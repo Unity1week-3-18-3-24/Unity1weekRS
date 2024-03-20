@@ -28,8 +28,8 @@ public class BarrierScript : MonoBehaviour
         //ダメージ与えたら消えます
         {
             col.gameObject.GetComponent<PlayerController>().PlayerDamage(Damage); //引数にDamageを入れてPlayerDamageを実行
-            this.gameObject.SetActive (false); //擬似的Destroy
-            //Destroy(this.gameObject);
+            //this.gameObject.SetActive (false); //擬似的Destroy
+            Destroy(this.gameObject);
         }
     }
 }
