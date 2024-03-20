@@ -183,7 +183,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37e1697ef7a80394c93d50b7af74eaa8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  JumpPower: 100
+  JumpPower: 0.2
   HPGage: {fileID: 1023668154}
 --- !u!212 &95301934
 SpriteRenderer:
