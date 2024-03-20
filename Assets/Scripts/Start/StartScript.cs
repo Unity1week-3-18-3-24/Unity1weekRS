@@ -3,15 +3,20 @@ using UnityEngine.UI;
 
 public class StartScript : MonoBehaviour
 {
-    public Text countdownText;
-    public float countdownTime = 3f;
-    private float timer = 0f;
-    private bool isCounting = true;
+    public Text countdownText; //3,2,1,GO!!のテキスト
+    public float countdownTime = 3f; //何秒からカウントダウンするかの定義
+    private float timer = 0f; //時間
+    private bool isCounting = true; //カウントダウンしてる？のbool
+
+    public static bool start = false; //MoveObjectスクリプトに送って判定してます
+
+    public float hideDelay = 2f; //非表示にするまでの時間
+
+    public GameObject text; //text非表示にするために使ってます
 
     void Start()
     {
-        // ゲームを開始する前のカウントダウンを開始する
-        timer = countdownTime;
+        timer = countdownTime; //ゲームを開始する前のカウントダウンを開始する
     }
 
     void Update()
@@ -19,17 +24,12 @@ public class StartScript : MonoBehaviour
         if (isCounting)
         {
             timer -= Time.deltaTime;
-
-            // UI上のテキストを更新する
-            countdownText.text = Mathf.CeilToInt(timer).ToString();
+            countdownText.text = Mathf.CeilToInt(timer).ToString(); //UI上のテキストを更新する
 
             if (timer <= 0)
             {
-                // カウントダウンが終了したら停止する
-                isCounting = false;
-
-                // ゲームを開始する処理を実行する
-                StartGame();
+                isCounting = false; //カウントダウンが終了したら停止する
+                StartGame(); //ゲームを開始する処理を実行する
             }
         }
     }
@@ -37,18 +37,14 @@ public class StartScript : MonoBehaviour
     void StartGame()
     {
         Debug.Log("ゲームが開始されました！");
-        // ここにゲームの開始処理を記述する
+        countdownText.text = "GO!!"; //ゲーム開始！
+        start = true; //地面も動くよ
+
+        Invoke("HideObject", hideDelay); //hideDelay秒後にテキスト見えなくなる
     }
 
-    public void PauseGame()
+    private void HideObject()
     {
-        // ゲームの時間を一時停止する
-        Time.timeScale = 0f;
-    }
-
-    public void ResumeGame()
-    {
-        // ゲームの時間を再開する
-        Time.timeScale = 1f;
+       text.SetActive(false); //オブジェクトを非表示にする
     }
 }

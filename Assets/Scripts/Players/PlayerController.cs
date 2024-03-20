@@ -30,7 +30,6 @@ public class PlayerController : MonoBehaviour
 
     public float switchInterval = 2f; // レイヤーを切り替える間隔（秒）
     public string[] layerNames; // 使用するレイヤーの名前の配列
-    private int currentIndex = 0; // 現在のレイヤーのインデックス
 
     void Start()
     {
@@ -115,7 +114,7 @@ public class PlayerController : MonoBehaviour
     }
     void SwitchLayer()
     {
-        gameObject.layer = LayerMask.NameToLayer("Damage");
+        gameObject.layer = LayerMask.NameToLayer("Damage"); //レイヤー変更
     }
 
 }

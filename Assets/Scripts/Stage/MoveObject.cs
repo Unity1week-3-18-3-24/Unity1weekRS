@@ -18,7 +18,10 @@ public class MoveGround : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Scroll();
+        if(StartScript.start == true) //StartScriptから信号がきたら
+        {
+            Scroll(); //動きます
+        }
     }
     void Scroll()
     //ScrollSpeedの値を加算して移動させる
