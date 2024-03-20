@@ -19,14 +19,14 @@ public class JudgeScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "Clear") //‚à‚µƒNƒŠƒAƒ^ƒO‚ğ’Ê‚Á‚½‚ç
+        if(collision.tag == "Clear") //ã‚¯ãƒªã‚¢ã‚¿ã‚°ã«å½“ãŸã£ãŸã‚‰
         {
-            SceneManager.LoadScene("GameClear"); //ƒQ[ƒ€ƒNƒŠƒAƒV[ƒ“‚ÉˆÚ“®
+            SceneManager.LoadScene("GameClear"); //ã‚¯ãƒªã‚¢ã‚·ãƒ¼ãƒ³ã«ç§»å‹•
         }
 
-        if (collision.tag == "Over") //‚à‚µOverƒ^ƒO‚ğ’Ê‚Á‚½‚ç
+        if (collision.tag == "Over") //ã‚ªãƒ¼ãƒãƒ¼ã‚·ãƒ¼ãƒ³ã«ç§»å‹•
         {
-            SceneManager.LoadScene("GameOver"); //ƒQ[ƒ€ƒI[ƒo[ƒV[ƒ“‚ÉˆÚ“®
+            SceneManager.LoadScene("GameOver"); //ã‚ªãƒ¼ãƒãƒ¼ã‚¿ã‚°ã«å½“ãŸã£ãŸã‚‰
         }
     }
 }
