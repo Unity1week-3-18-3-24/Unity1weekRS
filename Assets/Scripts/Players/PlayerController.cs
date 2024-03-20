@@ -28,8 +28,9 @@ public class PlayerController : MonoBehaviour
     public CapsuleCollider2D cp2d; //コライダーをオンオフするためのCapsleCollider2D
     bool isHit; //当たったかどうかのフラグ
 
-    public float disableDuration = 2f; // Colliderを無効にする時間
-    public float enableDuration = 1f; // Colliderを有効にする時間
+    public float switchInterval = 2f; // レイヤーを切り替える間隔（秒）
+    public string[] layerNames; // 使用するレイヤーの名前の配列
+    private int currentIndex = 0; // 現在のレイヤーのインデックス
 
     void Start()
     {
@@ -92,15 +93,14 @@ public class PlayerController : MonoBehaviour
         }
         
         StartCoroutine(_hit()); //コルーチンを開始
+
+        SwitchLayer(); // 最初のレイヤーを設定
+        InvokeRepeating("SwitchLayer", switchInterval, switchInterval); // 切り替えを開始
     }
     IEnumerator _hit() //点滅させる処理
     {
-        isHit = true; //当たりフラグをtrueに変更（当たっている状態）
-        cp2d.enabled = false; //Colliderを無効にする
-
-        yield return new WaitForSeconds(enableDuration); //enableDuration時間待つ
-            cp2d.enabled = true; //Colliderを有効にする
-
+       isHit = true; //当たりフラグをtrueに変更（当たっている状態）
+        
         for (int i = 0; i < loopCount; i++) //点滅ループ開始
         {
             yield return new WaitForSeconds(flashInterval); //flashInterval待ってから
@@ -111,6 +111,11 @@ public class PlayerController : MonoBehaviour
         }
 
         isHit = false; //点滅ループが抜けたら当たりフラグをfalse(当たってない状態)
+
+    }
+    void SwitchLayer()
+    {
+        gameObject.layer = LayerMask.NameToLayer("Damage");
     }
 
 }
