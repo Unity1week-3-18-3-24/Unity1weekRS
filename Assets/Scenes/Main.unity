@@ -183,8 +183,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37e1697ef7a80394c93d50b7af74eaa8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  JumpPower: 50
   BarrierScript: {fileID: 0}
+  JumpPower: 50
+  HPGage: {fileID: 1023668154}
 --- !u!212 &95301934
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -523,7 +524,6 @@ GameObject:
   - component: {fileID: 857004958}
   - component: {fileID: 857004957}
   - component: {fileID: 857004956}
-  - component: {fileID: 857004959}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -605,18 +605,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &857004959
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 857004955}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd9ded067c2cf004d93d2b512b8644df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1023668152
 GameObject:
   m_ObjectHideFlags: 0
@@ -652,7 +640,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 299.86, y: 139}
+  m_AnchoredPosition: {x: 232.3, y: 143.6}
   m_SizeDelta: {x: 252.28, y: 23.2379}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1023668154
