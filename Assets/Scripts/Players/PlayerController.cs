@@ -17,10 +17,10 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     private KeyCode randomKeyCode;
     private int HP = 100;//プレイヤーの体力、ゲームオーバーのトリガー
-    public BarrierScript BarrierScript;
     [SerializeField] float JumpPower; //ジャンプの高さ
     [SerializeField] Slider HPGage; //HPのスライダー
     // Start is called before the first frame update
+    private bool jumpflag = false; //ジャンプフラグ
     void Start()
     {
         randomKeyCode = (KeyCode)Random.Range((int)KeyCode.A, (int)KeyCode.Z); //ランダムなキーを決定
@@ -38,18 +38,27 @@ public class PlayerController : MonoBehaviour
         {
             SceneManager.LoadScene("GameOver"); //GameOverシーンに移動
         }
-
         if (Input.GetKeyDown(randomKeyCode)) //ランダムなキーが押されたら
+        {
+            jumpflag = true;
+        }
+
+        if(Input.GetKeyUp(randomKeyCode))
+        {
+            jumpflag = false;
+        }
+
+        if (jumpflag == true)
         {
             Debug.Log("Jump!");
             Vector2 jump = new Vector2(0.0f, JumpPower); // ジャンプの大きさ定義
             rb.AddForce(jump); //ジャンプ実行！
         }
     }
-    private void OnCollisionStay2D(Collision2D collision) //接触検知
+    private void OnCollisionEnter2D(Collision2D collision) //接触検知
     {
         //Debug.Log("touch"); //接触！
-
+        jumpflag = false;
     }
     public void PlayerDamage(int HitDamage)
     //引数を障害物から渡してもらって、プレイヤーの体力を減らします
