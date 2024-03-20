@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 /// <summary>
 /// プレイヤーの操作全般を司る
 /// キー設定は全部ランダムになる予定
@@ -22,24 +22,24 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        randomKeyCode = (KeyCode)Random.Range((int)KeyCode.A, (int)KeyCode.Z); //?????_?????L?[??????
-        Debug.Log(randomKeyCode); //?????_?????L?[?\??
+        randomKeyCode = (KeyCode)Random.Range((int)KeyCode.A, (int)KeyCode.Z); //ランダムなキーを決定
+        Debug.Log(randomKeyCode); //ランダムなキーを表示
         HPGage.value = 1; //スライダーの値を最大にする
     }
 
     // Update is called once per frame
     void Update()
     {
-        rb = this.GetComponent<Rigidbody2D>(); // Rigidbody2D????   
+        rb = this.GetComponent<Rigidbody2D>(); // Rigidbody2D取得
     }
-    private void OnCollisionStay2D(Collision2D collision) //Player???n????????????????
+    private void OnCollisionStay2D(Collision2D collision) //接触検知
     {
-        //Debug.Log("touch"); //????????????
+        //Debug.Log("touch"); //接触！
 
-        if (Input.GetKeyDown(randomKeyCode)) //?????????_?????L?[??????????
+        if (Input.GetKeyDown(randomKeyCode)) //ランダムなキーが押されたら
         {
-            Vector2 jump = new Vector2(0.0f, JumpPower); // ?W?????v????????????
-            rb.AddForce(jump); // ?W?????v???s
+            Vector2 jump = new Vector2(0.0f, JumpPower); // ジャンプの大きさ定義
+            rb.AddForce(jump); //ジャンプ実行！
         }
     }
     public void PlayerDamage(int HitDamage)
