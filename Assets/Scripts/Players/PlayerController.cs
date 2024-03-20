@@ -19,16 +19,36 @@ public class PlayerController : MonoBehaviour
     private int HP = 100;//プレイヤーの体力、ゲームオーバーのトリガー
     [SerializeField] float JumpPower; //ジャンプの高さ
     [SerializeField] Slider HPGage; //HPのスライダー
-    // Start is called before the first frame update
     private bool jumpflag = false; //ジャンプフラグ
+
+    
+    [SerializeField] float speed,flashInterval; //点滅の間隔
+    [SerializeField] int loopCount; //点滅させるときのループカウント
+    SpriteRenderer sp; //点滅させるためのSpriteRenderer
+    public CapsuleCollider2D cp2d; //コライダーをオンオフするためのCapsleCollider2D
+    bool isHit; //当たったかどうかのフラグ
+
+    public float disableDuration = 2f; // Colliderを無効にする時間
+    public float enableDuration = 1f; // Colliderを有効にする時間
+
     void Start()
     {
         randomKeyCode = (KeyCode)Random.Range((int)KeyCode.A, (int)KeyCode.Z); //ランダムなキーを決定
         Debug.Log(randomKeyCode); //ランダムなキーを表示
         HPGage.value = 1; //スライダーの値を最大にする
-    }
+        
+        sp = GetComponent<SpriteRenderer>(); //SpriteRenderer格納
+        cp2d = GetComponent<CapsuleCollider2D>(); //BoxCollider2D格納
 
-    // Update is called once per frame
+        if (cp2d == null)
+        {
+            Debug.LogError("CapsuleCollider2Dが見つかりませんでした!!");
+            enabled = false;
+            return;
+        }
+
+        cp2d.enabled = true; //collider有効
+    }
     void Update()
     {
         rb = this.GetComponent<Rigidbody2D>(); // Rigidbody2D取得
@@ -43,7 +63,7 @@ public class PlayerController : MonoBehaviour
             jumpflag = true;
         }
 
-        if(Input.GetKeyUp(randomKeyCode))
+        if(Input.GetKeyUp(randomKeyCode)) //ランダムなキーをあげたら
         {
             jumpflag = false;
         }
@@ -65,5 +85,32 @@ public class PlayerController : MonoBehaviour
     {
         HP = HP - HitDamage;
         HPGage.value = HP*0.01f; //スライダーの値減らす
+
+        if (isHit) //Hitしていたら処理を行わない
+        {
+            return;
+        }
+        
+        StartCoroutine(_hit()); //コルーチンを開始
     }
+    IEnumerator _hit() //点滅させる処理
+    {
+        isHit = true; //当たりフラグをtrueに変更（当たっている状態）
+        cp2d.enabled = false; //Colliderを無効にする
+
+        yield return new WaitForSeconds(enableDuration); //enableDuration時間待つ
+            cp2d.enabled = true; //Colliderを有効にする
+
+        for (int i = 0; i < loopCount; i++) //点滅ループ開始
+        {
+            yield return new WaitForSeconds(flashInterval); //flashInterval待ってから
+            sp.enabled = false; //spriteRendererをオフ
+            
+            yield return new WaitForSeconds(flashInterval); //flashInterval待ってから
+            sp.enabled = true; //spriteRendererをオン
+        }
+
+        isHit = false; //点滅ループが抜けたら当たりフラグをfalse(当たってない状態)
+    }
+
 }
