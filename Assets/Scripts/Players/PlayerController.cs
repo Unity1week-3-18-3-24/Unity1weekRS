@@ -70,7 +70,7 @@ public class PlayerController : MonoBehaviour
 
         if (jumpflag == true)
         {
-            Debug.Log("Jump!");
+            //Debug.Log("Jump!");
             Vector2 jump = new Vector2(0.0f, JumpPower); // ジャンプの大きさ定義
             rb.AddForce(jump); //ジャンプ実行！
         }
