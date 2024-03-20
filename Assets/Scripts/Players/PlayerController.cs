@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 /// <summary>
 /// プレイヤーの操作全般を司る
 /// キー設定は全部ランダムになる予定
@@ -31,6 +32,12 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         rb = this.GetComponent<Rigidbody2D>(); // Rigidbody2D取得
+        //Debug.Log(HP); //HP表示
+
+        if(HP <= 0) //HPが0になったら
+        {
+            SceneManager.LoadScene("GameOver"); //GameOverシーンに移動
+        }
     }
     private void OnCollisionStay2D(Collision2D collision) //接触検知
     {
