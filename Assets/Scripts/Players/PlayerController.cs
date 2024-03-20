@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D rb;
     private KeyCode randomKeyCode;
-    private int HP = 100;//プレイヤーの体力、ゲームオーバーのトリガー
+    public static int HP = 100;//プレイヤーの体力、ゲームオーバーのトリガー
     [SerializeField] float JumpPower; //ジャンプの高さ
     [SerializeField] Slider HPGage; //HPのスライダー
     private bool jumpflag = false; //ジャンプフラグ

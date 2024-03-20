@@ -8,7 +8,7 @@ using UnityEngine;
 /// </summary>
 public class BarrierScript : MonoBehaviour
 {
-    [SerializeField] int Damage; //Playerに与えるダメージ
+    public static int Damage; //Playerに与えるダメージ
     // Start is called before the first frame update
     void Start()
     {
