@@ -38,16 +38,18 @@ public class PlayerController : MonoBehaviour
         {
             SceneManager.LoadScene("GameOver"); //GameOverシーンに移動
         }
+
+        if (Input.GetKeyDown(randomKeyCode)) //ランダムなキーが押されたら
+        {
+            Debug.Log("Jump!");
+            Vector2 jump = new Vector2(0.0f, JumpPower); // ジャンプの大きさ定義
+            rb.AddForce(jump); //ジャンプ実行！
+        }
     }
     private void OnCollisionStay2D(Collision2D collision) //接触検知
     {
         //Debug.Log("touch"); //接触！
 
-        if (Input.GetKeyDown(randomKeyCode)) //ランダムなキーが押されたら
-        {
-            Vector2 jump = new Vector2(0.0f, JumpPower); // ジャンプの大きさ定義
-            rb.AddForce(jump); //ジャンプ実行！
-        }
     }
     public void PlayerDamage(int HitDamage)
     //引数を障害物から渡してもらって、プレイヤーの体力を減らします
