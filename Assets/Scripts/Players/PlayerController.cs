@@ -68,7 +68,7 @@ public class PlayerController : MonoBehaviour
             countdown = 5.0f;  //カウントダウンリセット
         }
 
-        Debug.Log(countdown);
+        //Debug.Log(countdown);
 
         if(jumpflag == true)
         {

@@ -184,7 +184,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37e1697ef7a80394c93d50b7af74eaa8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  JumpPower: 0.2
+  JumpPower: 50
   HPGage: {fileID: 1023668154}
   speed: 0.2
   flashInterval: 0.1
@@ -194,6 +194,7 @@ MonoBehaviour:
   layerNames:
   - Default
   - Damage
+  newLayerName: Damage
 --- !u!212 &95301934
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -487,9 +488,10 @@ GameObject:
   - component: {fileID: 505037091}
   - component: {fileID: 505037090}
   - component: {fileID: 505037089}
+  - component: {fileID: 505037095}
   m_Layer: 0
   m_Name: target
-  m_TagString: barrier
+  m_TagString: Clear
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -634,6 +636,33 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &505037095
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 505037088}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &508500955
 GameObject:
   m_ObjectHideFlags: 0
@@ -1122,6 +1151,7 @@ GameObject:
   - component: {fileID: 804925439}
   - component: {fileID: 804925437}
   - component: {fileID: 804925436}
+  - component: {fileID: 804925440}
   m_Layer: 0
   m_Name: magnet
   m_TagString: barrier
@@ -1138,7 +1168,7 @@ Transform:
   m_GameObject: {fileID: 804925434}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 110.6, y: -2.41, z: 0}
+  m_LocalPosition: {x: 110.6, y: -2.6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1258,6 +1288,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &804925440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 804925434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e42fdb4882ab4ec1bd9a08eedb5cbf5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &850353839
 GameObject:
   m_ObjectHideFlags: 0
@@ -2061,7 +2103,7 @@ Transform:
   m_GameObject: {fileID: 1149021615}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -55.8, y: -0.84159994, z: 0}
+  m_LocalPosition: {x: -55.8, y: -0.6516001, z: 0}
   m_LocalScale: {x: 131.5, y: 0.2508266, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
