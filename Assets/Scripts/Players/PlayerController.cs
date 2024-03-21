@@ -19,7 +19,9 @@ public class PlayerController : MonoBehaviour
     public static int HP = 100;//プレイヤーの体力、ゲームオーバーのトリガー
     [SerializeField] float JumpPower; //ジャンプの高さ
     [SerializeField] Slider HPGage; //HPのスライダー
-    private bool jumpflag = false; //ジャンプフラグ
+    private bool jumpflag; //ジャンプフラグ
+
+    private float countdown = 2.0f; //ジャンプクールタイム
 
     
     [SerializeField] float speed,flashInterval; //点滅の間隔
@@ -60,25 +62,22 @@ public class PlayerController : MonoBehaviour
         }
         if (Input.GetKeyDown(randomKeyCode)) //ランダムなキーが押されたら
         {
-            jumpflag = true;
+            Jump(); //ジャンプします
+            countdown = 5.0f;  //カウントダウンリセット
         }
 
-        if(Input.GetKeyUp(randomKeyCode)) //ランダムなキーをあげたら
+        Debug.Log(countdown);
+
+        if(jumpflag == true)
         {
-            jumpflag = false;
+            countdown -= Time.deltaTime; //カウントダウン始めるよ〜〜
+            JumpPower = 0.0f; //動けないように
         }
 
-        if (jumpflag == true)
+        if(countdown <= 0.0f)
         {
-            //Debug.Log("Jump!");
-            Vector2 jump = new Vector2(0.0f, JumpPower); // ジャンプの大きさ定義
-            rb.AddForce(jump); //ジャンプ実行！
+            JumpPower = 50.0f; //動けるように
         }
-    }
-    private void OnCollisionEnter2D(Collision2D collision) //接触検知
-    {
-        //Debug.Log("touch"); //接触！
-        jumpflag = false;
     }
     public void PlayerDamage(int HitDamage)
     //引数を障害物から渡してもらって、プレイヤーの体力を減らします
@@ -115,6 +114,14 @@ public class PlayerController : MonoBehaviour
     void SwitchLayer()
     {
         gameObject.layer = LayerMask.NameToLayer("Damage"); //レイヤー変更
+    }
+
+    void Jump()
+    {
+        Debug.Log("Jump!");
+        Vector2 jump = new Vector2(0.0f, JumpPower); // ジャンプの大きさ定義
+        rb.AddForce(jump); //ジャンプ実行！    
+        jumpflag = true;        
     }
 
 }

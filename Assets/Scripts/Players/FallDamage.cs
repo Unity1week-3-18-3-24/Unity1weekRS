@@ -31,13 +31,13 @@ public class FallDamage : MonoBehaviour
         // 落下中の場合、前フレームのY座標を現在のY座標として更新し、落下状態をtrueに設定
         isFalling = true;
         lastYPos = currentYPos;
-        Debug.Log(isFalling);
+        //Debug.Log(isFalling);
 
         if(isFalling == true)
         {
             BarrierScript.Damage = Mathf.RoundToInt(baseDamage + (transform.position.y - lastYPos) * damageMultiplier);
-            Debug.Log("Fall damage: " + BarrierScript.Damage);
-            Invoke("DownDamage", 0f); // 0秒後に関数を呼び出す
+            //Debug.Log("Fall damage: " + BarrierScript.Damage);
+            //Invoke("DownDamage", 0f); // 0秒後に関数を呼び出す
         }
     }
     void DownDamage()
