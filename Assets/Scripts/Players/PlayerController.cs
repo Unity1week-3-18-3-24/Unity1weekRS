@@ -32,6 +32,8 @@ public class PlayerController : MonoBehaviour
 
     public float switchInterval = 2f; // レイヤーを切り替える間隔（秒）
     public string[] layerNames; // 使用するレイヤーの名前の配列
+    public string newLayerName; //変更するレイヤーの名前
+    private float Damagecount = 3.0f;
 
     void Start()
     {
@@ -93,7 +95,6 @@ public class PlayerController : MonoBehaviour
         StartCoroutine(_hit()); //コルーチンを開始
 
         SwitchLayer(); // 最初のレイヤーを設定
-        InvokeRepeating("SwitchLayer", switchInterval, switchInterval); // 切り替えを開始
     }
     IEnumerator _hit() //点滅させる処理
     {
@@ -113,7 +114,15 @@ public class PlayerController : MonoBehaviour
     }
     void SwitchLayer()
     {
-        gameObject.layer = LayerMask.NameToLayer("Damage"); //レイヤー変更
+        //gameObject.layer = LayerMask.NameToLayer("Damage"); //レイヤー変更
+        BarrierScript.Damage = 0;
+        Damagecount -=Time.deltaTime;
+        if(Damagecount <= 0)
+        {
+            BarrierScript.Damage = 10;
+            Damagecount = 3.0f;
+        }
+        Debug.Log("Layerchange");
     }
 
     void Jump()
