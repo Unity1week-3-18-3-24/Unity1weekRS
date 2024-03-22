@@ -58,7 +58,6 @@ public class PlayerScript : MonoBehaviour
     void LogKeyIntegers()
     {
         // すべてのキーとそれに割り当てられた整数をログに表示します
-        
     }
 
     void Update()
