@@ -3,7 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-
+/// <summary>
+/// プレイヤーの操作全般を司る
+/// キー設定は全部ランダムになる予定
+/// プレイヤーの機能
+/// ・ジャンプ
+/// ・スニーク
+/// ・体力システム
+/// </summary>
 public class PlayerScript : MonoBehaviour
 {
     Dictionary<char, int> keyIntegers = new Dictionary<char, int>();
