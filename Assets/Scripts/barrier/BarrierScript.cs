@@ -26,14 +26,11 @@ public class BarrierScript : MonoBehaviour
         //if(col.gameObject.GetComponent<PlayerController>())
         //当たったオブジェクトがPlayerControllerのコンポーネントがあった時に実行
         //ダメージ与えたら消えます
-        //{
             if(col.gameObject.tag == "Player")
             {
                 col.gameObject.GetComponent<PlayerScript>().PlayerDamage(Damage); //引数にDamageを入れてPlayerDamageを実行
                 Debug.Log("atatta");
-                this.gameObject.SetActive (false); //擬似的Destroy
+                Destroy(this.gameObject);
             }
-            //Destroy(this.gameObject);
-        //}
     }
 }
