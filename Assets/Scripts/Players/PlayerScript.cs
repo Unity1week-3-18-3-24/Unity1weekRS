@@ -26,8 +26,7 @@ public class PlayerScript : MonoBehaviour
 
     void Start()
     {
-        AssignRandomKeys();
-        AssignAlphabetIndexes();
+        AssignKeysAndIntegers();
         LogKeyIntegers();
 
         HPGage.value = 1;
@@ -36,25 +35,18 @@ public class PlayerScript : MonoBehaviour
         cp2d = GetComponent<CapsuleCollider2D>();
     }
 
-    void AssignRandomKeys()
+    void AssignKeysAndIntegers()
     {
         for (int i = 0; i < alphabet.Length; i++)
         {
             char currentKey = alphabet[i];
-            // ランダムなKeyCodeを割り当てる
-            KeyCode randomKeyCode = (KeyCode)Random.Range((int)KeyCode.A, (int)KeyCode.Z + 1);
+            // アルファベットキーごとに固定のキーコードを割り当てる
+            KeyCode fixedKeyCode = (KeyCode)(KeyCode.A + i);
+            // ランダムな整数（0〜26）を割り当てる
+            int randomInteger = Random.Range(0, 27);
             // マッピングを追加
-            keyCodes.Add(currentKey, randomKeyCode);
-        }
-    }
-
-    void AssignAlphabetIndexes()
-    {
-        for (int i = 0; i < alphabet.Length; i++)
-        {
-            char currentKey = alphabet[i];
-            // アルファベットのインデックス（0から25までの数値）を割り当てる
-            keyIntegers.Add(currentKey, i);
+            keyCodes.Add(currentKey, fixedKeyCode);
+            keyIntegers.Add(currentKey, randomInteger);
         }
     }
 
@@ -62,7 +54,7 @@ public class PlayerScript : MonoBehaviour
     {
         foreach (var kvp in keyCodes)
         {
-            Debug.Log("Key: " + kvp.Key + ", KeyCode: " + kvp.Value + ", Value: " + keyIntegers[kvp.Key]);
+            //Debug.Log("Key: " + kvp.Key + ", KeyCode: " + kvp.Value + ", Random Integer: " + keyIntegers[kvp.Key]);
         }
     }
 
@@ -79,8 +71,113 @@ public class PlayerScript : MonoBehaviour
         {
             if (Input.GetKeyDown(kvp.Value))
             {
-                Debug.Log("Random Value for Key " + kvp.Key + ": " + keyIntegers[kvp.Key]);
-                // Do something with the random value for this key
+                //Debug.Log("Random Integer for Key " + kvp.Key + ": " + keyIntegers[kvp.Key]);
+                // Do something with the random integer for this key
+                if( keyIntegers[kvp.Key] == 1)
+                {
+                    Debug.Log("1");
+                }
+                if( keyIntegers[kvp.Key] == 2)
+                {
+                    Debug.Log("2");
+                }
+                if( keyIntegers[kvp.Key] == 3)
+                {
+                    Debug.Log("3");
+                }
+                if( keyIntegers[kvp.Key] == 4)
+                {
+                    Debug.Log("4");
+                }
+                if( keyIntegers[kvp.Key] == 5)
+                {
+                    Debug.Log("5");
+                }
+                if( keyIntegers[kvp.Key] == 6)
+                {
+                    Debug.Log("6");
+                }
+                if( keyIntegers[kvp.Key] == 7)
+                {
+                    Debug.Log("7");
+                }
+                if( keyIntegers[kvp.Key] == 8)
+                {
+                    Debug.Log("8");
+                }
+                if( keyIntegers[kvp.Key] == 9)
+                {
+                    Debug.Log("9");
+                }
+                if( keyIntegers[kvp.Key] == 10)
+                {
+                    Debug.Log("10");
+                }
+                if( keyIntegers[kvp.Key] == 11)
+                {
+                    Debug.Log("11");
+                }
+                if( keyIntegers[kvp.Key] == 12)
+                {
+                    Debug.Log("12");
+                }
+                if( keyIntegers[kvp.Key] == 13)
+                {
+                    Debug.Log("13");
+                }
+                if( keyIntegers[kvp.Key] == 14)
+                {
+                    Debug.Log("14");
+                }
+                if( keyIntegers[kvp.Key] == 15)
+                {
+                    Debug.Log("15");
+                }
+                if( keyIntegers[kvp.Key] == 16)
+                {
+                    Debug.Log("16");
+                }
+                if( keyIntegers[kvp.Key] == 17)
+                {
+                    Debug.Log("17");
+                }
+                if( keyIntegers[kvp.Key] == 18)
+                {
+                    Debug.Log("18");
+                }
+                if( keyIntegers[kvp.Key] == 19)
+                {
+                    Debug.Log("19");
+                }
+                if( keyIntegers[kvp.Key] == 20)
+                {
+                    Debug.Log("20");
+                }
+                if( keyIntegers[kvp.Key] == 21)
+                {
+                    Debug.Log("21");
+                }
+                if( keyIntegers[kvp.Key] == 22)
+                {
+                    Debug.Log("22");
+                }
+                if( keyIntegers[kvp.Key] == 23)
+                {
+                    Debug.Log("23");
+                }
+                if( keyIntegers[kvp.Key] == 24)
+                {
+                    Debug.Log("24");
+                }
+                if( keyIntegers[kvp.Key] == 25)
+                {
+                    Debug.Log("25");
+                }
+                if( keyIntegers[kvp.Key] == 26)
+                {
+                    Debug.Log("26");
+                }
+
             }
         }
 
