@@ -33,7 +33,7 @@ public class GameClear : MonoBehaviour
         goal -= Time.deltaTime;
         if(goal <= 0)
         {
-            Debug.Log("clear");
+            //Debug.Log("clear");
             SceneManager.LoadScene("GameClear");
         }
     }
