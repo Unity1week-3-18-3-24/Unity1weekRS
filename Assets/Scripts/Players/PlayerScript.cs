@@ -75,7 +75,7 @@ public class PlayerScript : MonoBehaviour
                 // Do something with the random integer for this key
                 if( keyIntegers[kvp.Key] == 1)
                 {
-                    Debug.Log("1");
+                    Jump_one();
                 }
                 if( keyIntegers[kvp.Key] == 2)
                 {
@@ -199,6 +199,54 @@ public class PlayerScript : MonoBehaviour
         rb.AddForce(jump);
         jumpflag = true;    
     }
+
+    void Jump_two()
+    {
+        Debug.Log("2");  
+    }
+
+    void Jump_three()
+    {
+        Debug.Log("3");    
+    }
+
+    void Jump_four()
+    {
+       Debug.Log("4");  
+    }
+
+    void Jump_five()
+    {
+        Debug.Log("5");
+    }
+
+    void Jump_six()
+    {
+        Debug.Log("6");  
+    }
+
+    void Jump_seven()
+    {
+        Debug.Log("7");
+    }
+
+    void Jump_eight()
+    {
+        Debug.Log("8");
+    }
+
+    void Jump_nine()
+    {
+        Debug.Log("9");
+    }
+
+    void Jump_ten()
+    {
+        Debug.Log("10");
+    }
+
+
+
 
     public void PlayerDamage(int HitDamage)
     {
