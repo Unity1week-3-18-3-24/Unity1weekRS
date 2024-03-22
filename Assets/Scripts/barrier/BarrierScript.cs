@@ -29,7 +29,7 @@ public class BarrierScript : MonoBehaviour
             if(col.gameObject.tag == "Player")
             {
                 col.gameObject.GetComponent<PlayerScript>().PlayerDamage(Damage); //引数にDamageを入れてPlayerDamageを実行
-                Debug.Log("atatta");
+                //Debug.Log("atatta");
                 Destroy(this.gameObject);
             }
     }
