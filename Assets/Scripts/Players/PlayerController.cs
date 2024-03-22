@@ -29,16 +29,10 @@ public class PlayerController : MonoBehaviour
     SpriteRenderer sp; //点滅させるためのSpriteRenderer
     public CapsuleCollider2D cp2d; //コライダーをオンオフするためのCapsleCollider2D
     bool isHit; //当たったかどうかのフラグ
-
-    public float switchInterval = 2f; // レイヤーを切り替える間隔（秒）
-    public string[] layerNames; // 使用するレイヤーの名前の配列
-    public string newLayerName; //変更するレイヤーの名前
     private float Damagecount = 3.0f;
 
     void Start()
     {
-        randomKeyCode = (KeyCode)Random.Range((int)KeyCode.A, (int)KeyCode.Z); //ランダムなキーを決定
-        Debug.Log(randomKeyCode); //ランダムなキーを表示
         HPGage.value = 1; //スライダーの値を最大にする
         
         sp = GetComponent<SpriteRenderer>(); //SpriteRenderer格納
@@ -125,7 +119,7 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Layerchange");
     }
 
-    void Jump()
+    public void Jump()
     {
         Debug.Log("Jump!");
         Vector2 jump = new Vector2(0.0f, JumpPower); // ジャンプの大きさ定義

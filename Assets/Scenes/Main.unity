@@ -133,7 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 95301935}
   - component: {fileID: 95301934}
-  - component: {fileID: 95301933}
+  - component: {fileID: 95301938}
   - component: {fileID: 95301937}
   - component: {fileID: 95301932}
   - component: {fileID: 95301936}
@@ -171,29 +171,6 @@ Rigidbody2D:
   m_SleepingMode: 0
   m_CollisionDetection: 0
   m_Constraints: 5
---- !u!114 &95301933
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 95301931}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37e1697ef7a80394c93d50b7af74eaa8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  JumpPower: 50
-  HPGage: {fileID: 1023668154}
-  speed: 0.2
-  flashInterval: 0.1
-  loopCount: 10
-  cp2d: {fileID: 95301936}
-  switchInterval: 2
-  layerNames:
-  - Default
-  - Damage
-  newLayerName: Damage
 --- !u!212 &95301934
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -308,6 +285,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ffe62d1c40ca794d8c77449c7ea3a29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &95301938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 95301931}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cbd56342a9954dfeac6d8a9bcc1efe4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 95301932}
+  JumpPower: 50
+  HPGage: {fileID: 1023668154}
+  speed: 0.2
+  flashInterval: 0.1
+  loopCount: 10
+  cp2d: {fileID: 95301936}
 --- !u!1 &100742214
 GameObject:
   m_ObjectHideFlags: 0
@@ -827,7 +823,6 @@ GameObject:
   - component: {fileID: 539189772}
   - component: {fileID: 539189771}
   - component: {fileID: 539189770}
-  - component: {fileID: 539189769}
   - component: {fileID: 539189768}
   m_Layer: 0
   m_Name: barrier2
@@ -848,22 +843,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f533c41702df43be8265b82848ab173, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &539189769
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 539189767}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c495462912964e37b634cf17745c6eb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ScrollSpeed: 0.01
-  target: {fileID: 0}
-  speed: 5
-  decelerationDistance: 1
 --- !u!61 &539189770
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2256,7 +2235,6 @@ GameObject:
   - component: {fileID: 1764592164}
   - component: {fileID: 1764592168}
   - component: {fileID: 1764592167}
-  - component: {fileID: 1764592166}
   - component: {fileID: 1764592169}
   m_Layer: 0
   m_Name: barrier
@@ -2332,22 +2310,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1149021618}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1764592166
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1764592163}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c495462912964e37b634cf17745c6eb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ScrollSpeed: 0.01
-  target: {fileID: 0}
-  speed: 5
-  decelerationDistance: 1
 --- !u!61 &1764592167
 BoxCollider2D:
   m_ObjectHideFlags: 0
