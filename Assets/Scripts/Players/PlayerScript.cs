@@ -196,7 +196,7 @@ public class PlayerScript : MonoBehaviour
 
     void Jump_one()
     {
-        Debug.Log("Jump!");
+        //Debug.Log("Jump!");
         Vector2 jump = new Vector2(0.0f, JumpPower); // ジャンプの大きさ定義
         rb.AddForce(jump); //ジャンプ実行！    
         jumpflag = true;    
@@ -245,6 +245,6 @@ public class PlayerScript : MonoBehaviour
             BarrierScript.Damage = 10;
             Damagecount = 3.0f;
         }
-        Debug.Log("Layerchange");
+        //Debug.Log("Layerchange");
     }
 }
