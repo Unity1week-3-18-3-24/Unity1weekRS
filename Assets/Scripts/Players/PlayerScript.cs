@@ -26,10 +26,6 @@ public class PlayerScript : MonoBehaviour
 
     public float fadeSpeed = 0.5f; // フェードスピード
 
-    public  SpriteRenderer spriteRenderer;
-    private bool fading = false;
-    private bool fading2 = false;
-
     private bool damageflag;
 
     public GameObject enemy1;
@@ -38,6 +34,9 @@ public class PlayerScript : MonoBehaviour
     public GameObject enemy4;
     public GameObject enemy5;
 
+    public float fadeDuration = 1f; // フェードの期間（秒）
+    public float startAlpha = 1f;   // 開始アルファ値
+    public float endAlpha = 0f;     // 終了アルファ値
 
 
     void Start()
@@ -49,7 +48,6 @@ public class PlayerScript : MonoBehaviour
 
         sp = GetComponent<SpriteRenderer>();
         cp2d = GetComponent<CapsuleCollider2D>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void AssignKeysAndIntegers()
@@ -108,13 +106,11 @@ public class PlayerScript : MonoBehaviour
                 if( keyIntegers[kvp.Key] == 4)
                 {
                     Debug.Log("4");
-                    fading=true;
                     Four();
                 }
                 if( keyIntegers[kvp.Key] == 5)
                 {
                     Debug.Log("5");
-                    fading2=true;
                     Five();
                 }
                 if( keyIntegers[kvp.Key] == 6)
@@ -164,10 +160,7 @@ public class PlayerScript : MonoBehaviour
             damageflag = false;
             Damagecount = 1.0f;
         }
-        if(Damagecount >= 0)
-        {
-           
-        }
+        
     }
 
     void One() //ジャンプ！
@@ -190,45 +183,14 @@ public class PlayerScript : MonoBehaviour
     void Four() //暗くなります
     {
        Debug.Log("4");  
-       if (fading)
-        {
-            // 現在の透明度を取得
-            Color color = spriteRenderer.color;
-            // フェードスピードに応じて透明度を減少させる
-            color.a -= fadeSpeed * Time.deltaTime;
-            // 透明度が0以下になったら0にクランプする
-            color.a = Mathf.Clamp01(color.a);
-            // 変更した透明度を反映
-            spriteRenderer.color = color;
-
-            // 透明度が完全に0になったらフェードを停止する
-            if (color.a <= 0)
-            {
-                fading = false;
-            }
-        }
+       //Debug.Log(test.onflag);
+       test.onflag = true;
     }
 
     void Five() //明るくなります
     {
         Debug.Log("5");
-        if (fading2)
-        {
-            // 現在の透明度を取得
-            Color color = spriteRenderer.color;
-            // フェードスピードに応じて透明度を増加させる
-            color.a += fadeSpeed * Time.deltaTime;
-            // 透明度が1以上になったら1にクランプする
-            color.a = Mathf.Clamp01(color.a);
-            // 変更した透明度を反映
-            spriteRenderer.color = color;
-
-            // 透明度が完全に1になったらフェードを停止する
-            if (color.a >= 1)
-            {
-                fading = false;
-            }
-        }
+        test.offflag = true;
     }
 
     void Six() //敵全部消えます

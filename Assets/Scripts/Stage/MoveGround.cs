@@ -38,13 +38,6 @@ public class MoveGround : MonoBehaviour
         Vector3 direction = target.position - transform.position;
         float distance = direction.magnitude;
 
-        // 目的地に到達した場合、移動を停止
-        if (distance <= 0.1f)
-        {
-            // もしくは、任意の処理を追加する
-            return;
-        }
-
         // 移動
         transform.Translate(direction.normalized * speed * Time.deltaTime, Space.World);
     }
