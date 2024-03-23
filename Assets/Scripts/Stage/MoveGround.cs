@@ -8,10 +8,10 @@ using UnityEngine;
 
 public class MoveGround : MonoBehaviour
 {
-    [SerializeField] float ScrollSpeed; //スクロールの速さ
+    //public static float ScrollSpeed = 0.1f; //スクロールの速さ
 
     public Transform target; // 目的地
-    public float speed = 5.0f; // 移動速度
+    public static float speed = 5.0f; // 移動速度
     public float decelerationDistance = 1.0f; // 減速を開始する距離
     // Start is called before the first frame update
     void Start()

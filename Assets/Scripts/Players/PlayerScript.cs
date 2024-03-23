@@ -43,7 +43,7 @@ public class PlayerScript : MonoBehaviour
             // アルファベットキーごとに固定のキーコードを割り当てる
             KeyCode fixedKeyCode = (KeyCode)(KeyCode.A + i);
             // ランダムな整数（0〜26）を割り当てる
-            int randomInteger = Random.Range(0, 27);
+            int randomInteger = Random.Range(1, 26);
             // マッピングを追加
             keyCodes.Add(currentKey, fixedKeyCode);
             keyIntegers.Add(currentKey, randomInteger);
@@ -75,15 +75,18 @@ public class PlayerScript : MonoBehaviour
                 // Do something with the random integer for this key
                 if( keyIntegers[kvp.Key] == 1)
                 {
-                    Jump_one();
+                    Debug.Log("1");
+                    One();
                 }
                 if( keyIntegers[kvp.Key] == 2)
                 {
                     Debug.Log("2");
+                    Two();
                 }
                 if( keyIntegers[kvp.Key] == 3)
                 {
                     Debug.Log("3");
+                    Three();
                 }
                 if( keyIntegers[kvp.Key] == 4)
                 {
@@ -193,54 +196,54 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
-    void Jump_one()
+    void One() //ジャンプ！
     {
         Vector2 jump = new Vector2(0.0f, JumpPower);
         rb.AddForce(jump);
         jumpflag = true;    
     }
 
-    void Jump_two()
+    void Two() //スクロール早くなる
     {
-        Debug.Log("2");  
+        MoveGround.speed = 10.0f;
     }
 
-    void Jump_three()
+    void Three() //スクロール遅くなる
     {
-        Debug.Log("3");    
+       MoveGround.speed = 2.5f;
     }
 
-    void Jump_four()
+    void Four()
     {
        Debug.Log("4");  
     }
 
-    void Jump_five()
+    void Five()
     {
         Debug.Log("5");
     }
 
-    void Jump_six()
+    void Six()
     {
         Debug.Log("6");  
     }
 
-    void Jump_seven()
+    void Seven()
     {
         Debug.Log("7");
     }
 
-    void Jump_eight()
+    void Eight()
     {
         Debug.Log("8");
     }
 
-    void Jump_nine()
+    void Nine()
     {
         Debug.Log("9");
     }
 
-    void Jump_ten()
+    void Ten()
     {
         Debug.Log("10");
     }
