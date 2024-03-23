@@ -8,7 +8,7 @@ using UnityEngine;
 /// </summary>
 public class BarrierScript : MonoBehaviour
 {
-    public static int Damage = 40; //Playerに与えるダメージ
+    public static int Damage = 20; //Playerに与えるダメージ
     // Start is called before the first frame update
     void Start()
     {
@@ -18,7 +18,6 @@ public class BarrierScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
     }
     void OnCollisionEnter2D(Collision2D col)
     //PlayerのDamege関数を実行させる

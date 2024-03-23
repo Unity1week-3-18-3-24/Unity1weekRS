@@ -32,6 +32,13 @@ public class PlayerScript : MonoBehaviour
 
     private bool damageflag;
 
+    public GameObject enemy1;
+    public GameObject enemy2;
+    public GameObject enemy3;
+    public GameObject enemy4;
+    public GameObject enemy5;
+
+
 
     void Start()
     {
@@ -153,7 +160,7 @@ public class PlayerScript : MonoBehaviour
         }
         if(Damagecount <= 0)
         {
-            BarrierScript.Damage = 40;
+            BarrierScript.Damage = 20;
             damageflag = false;
             Damagecount = 1.0f;
         }
@@ -224,14 +231,24 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
-    void Six()
+    void Six() //敵全部消えます
     {
         Debug.Log("6");  
+        enemy1.SetActive(false);
+        enemy2.SetActive(false);
+        enemy3.SetActive(false);
+        enemy4.SetActive(false);
+        enemy5.SetActive(false);
     }
 
-    void Seven()
+    void Seven() //敵戻ります
     {
         Debug.Log("7");
+        enemy1.SetActive(true);
+        enemy2.SetActive(true);
+        enemy3.SetActive(true);
+        enemy4.SetActive(true);
+        enemy5.SetActive(true);
     }
 
     void Eight()
@@ -277,10 +294,11 @@ public class PlayerScript : MonoBehaviour
             
             yield return new WaitForSeconds(flashInterval);
             sp.enabled = true;
+            //BarrierScript.Damage = 0;
         }
 
         isHit = false;
-        BarrierScript.Damage = 0;
+        
     }
 
     void SwitchLayer()

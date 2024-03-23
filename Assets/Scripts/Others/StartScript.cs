@@ -1,3 +1,4 @@
+using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,6 +15,10 @@ public class StartScript : MonoBehaviour
 
     public GameObject text; //text非表示にするために使ってます
 
+    public static float gametime;
+    public Text gametimetext;
+
+    public static bool timeflag;
     void Start()
     {
         timer = countdownTime; //ゲームを開始する前のカウントダウンを開始する
@@ -32,6 +37,11 @@ public class StartScript : MonoBehaviour
                 StartGame(); //ゲームを開始する処理を実行する
             }
         }
+        if(timeflag == true)
+        {
+            gametime += Time.deltaTime;
+        }
+        gametimetext.text = gametime.ToString("F2");
     }
 
     void StartGame()
@@ -41,6 +51,7 @@ public class StartScript : MonoBehaviour
         start = true; //地面も動くよ
 
         Invoke("HideObject", hideDelay); //hideDelay秒後にテキスト見えなくなる
+        timeflag = true;
     }
 
     private void HideObject()

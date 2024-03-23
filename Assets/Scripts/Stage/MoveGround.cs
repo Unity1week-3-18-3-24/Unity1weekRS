@@ -45,14 +45,6 @@ public class MoveGround : MonoBehaviour
             return;
         }
 
-        // 減速を開始する距離に達したら減速を開始
-        if (distance <= decelerationDistance)
-        {
-            // 減速
-            float decelerationFactor = distance / decelerationDistance;
-            speed *= decelerationFactor;
-        }
-
         // 移動
         transform.Translate(direction.normalized * speed * Time.deltaTime, Space.World);
     }

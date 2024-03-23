@@ -18,23 +18,15 @@ public class GameClear : MonoBehaviour
         
     }
 
-    void OnCollisionStay2D(Collision2D collisionInfo)
+    void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log(collisionInfo);
-        if(collisionInfo.collider.tag == "Clear")
-        {
-            Clear();
-        }
+        SceneManager.LoadScene("GameClear");
+        StartScript.timeflag = false;
+        
     }
-
     void Clear()
     {
         Debug.Log(goal);
         goal -= Time.deltaTime;
-        if(goal <= 0)
-        {
-            //Debug.Log("clear");
-            SceneManager.LoadScene("GameClear");
-        }
     }
 }
