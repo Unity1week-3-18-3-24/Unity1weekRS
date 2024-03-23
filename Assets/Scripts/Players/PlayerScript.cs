@@ -24,6 +24,13 @@ public class PlayerScript : MonoBehaviour
     bool isHit;
     private float Damagecount = 3.0f;
 
+    public float fadeSpeed = 0.5f; // フェードスピード
+
+    public  SpriteRenderer spriteRenderer;
+    private bool fading = false;
+    private bool fading2 = false;
+
+
     void Start()
     {
         AssignKeysAndIntegers();
@@ -33,6 +40,7 @@ public class PlayerScript : MonoBehaviour
 
         sp = GetComponent<SpriteRenderer>();
         cp2d = GetComponent<CapsuleCollider2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void AssignKeysAndIntegers()
@@ -43,7 +51,7 @@ public class PlayerScript : MonoBehaviour
             // アルファベットキーごとに固定のキーコードを割り当てる
             KeyCode fixedKeyCode = (KeyCode)(KeyCode.A + i);
             // ランダムな整数（0〜26）を割り当てる
-            int randomInteger = Random.Range(1, 26);
+            int randomInteger = Random.Range(1, 6);
             // マッピングを追加
             keyCodes.Add(currentKey, fixedKeyCode);
             keyIntegers.Add(currentKey, randomInteger);
@@ -91,10 +99,14 @@ public class PlayerScript : MonoBehaviour
                 if( keyIntegers[kvp.Key] == 4)
                 {
                     Debug.Log("4");
+                    fading=true;
+                    Four();
                 }
                 if( keyIntegers[kvp.Key] == 5)
                 {
                     Debug.Log("5");
+                    fading2=true;
+                    Five();
                 }
                 if( keyIntegers[kvp.Key] == 6)
                 {
@@ -116,70 +128,7 @@ public class PlayerScript : MonoBehaviour
                 {
                     Debug.Log("10");
                 }
-                if( keyIntegers[kvp.Key] == 11)
-                {
-                    Debug.Log("11");
-                }
-                if( keyIntegers[kvp.Key] == 12)
-                {
-                    Debug.Log("12");
-                }
-                if( keyIntegers[kvp.Key] == 13)
-                {
-                    Debug.Log("13");
-                }
-                if( keyIntegers[kvp.Key] == 14)
-                {
-                    Debug.Log("14");
-                }
-                if( keyIntegers[kvp.Key] == 15)
-                {
-                    Debug.Log("15");
-                }
-                if( keyIntegers[kvp.Key] == 16)
-                {
-                    Debug.Log("16");
-                }
-                if( keyIntegers[kvp.Key] == 17)
-                {
-                    Debug.Log("17");
-                }
-                if( keyIntegers[kvp.Key] == 18)
-                {
-                    Debug.Log("18");
-                }
-                if( keyIntegers[kvp.Key] == 19)
-                {
-                    Debug.Log("19");
-                }
-                if( keyIntegers[kvp.Key] == 20)
-                {
-                    Debug.Log("20");
-                }
-                if( keyIntegers[kvp.Key] == 21)
-                {
-                    Debug.Log("21");
-                }
-                if( keyIntegers[kvp.Key] == 22)
-                {
-                    Debug.Log("22");
-                }
-                if( keyIntegers[kvp.Key] == 23)
-                {
-                    Debug.Log("23");
-                }
-                if( keyIntegers[kvp.Key] == 24)
-                {
-                    Debug.Log("24");
-                }
-                if( keyIntegers[kvp.Key] == 25)
-                {
-                    Debug.Log("25");
-                }
-                if( keyIntegers[kvp.Key] == 26)
-                {
-                    Debug.Log("26");
-                }
+
 
             }
         }
@@ -210,17 +159,51 @@ public class PlayerScript : MonoBehaviour
 
     void Three() //スクロール遅くなる
     {
-       MoveGround.speed = 2.5f;
+       MoveGround.speed = 4f;
     }
 
-    void Four()
+    void Four() //暗くなります
     {
        Debug.Log("4");  
+       if (fading)
+        {
+            // 現在の透明度を取得
+            Color color = spriteRenderer.color;
+            // フェードスピードに応じて透明度を減少させる
+            color.a -= fadeSpeed * Time.deltaTime;
+            // 透明度が0以下になったら0にクランプする
+            color.a = Mathf.Clamp01(color.a);
+            // 変更した透明度を反映
+            spriteRenderer.color = color;
+
+            // 透明度が完全に0になったらフェードを停止する
+            if (color.a <= 0)
+            {
+                fading = false;
+            }
+        }
     }
 
-    void Five()
+    void Five() //明るくなります
     {
         Debug.Log("5");
+        if (fading2)
+        {
+            // 現在の透明度を取得
+            Color color = spriteRenderer.color;
+            // フェードスピードに応じて透明度を増加させる
+            color.a += fadeSpeed * Time.deltaTime;
+            // 透明度が1以上になったら1にクランプする
+            color.a = Mathf.Clamp01(color.a);
+            // 変更した透明度を反映
+            spriteRenderer.color = color;
+
+            // 透明度が完全に1になったらフェードを停止する
+            if (color.a >= 1)
+            {
+                fading = false;
+            }
+        }
     }
 
     void Six()
