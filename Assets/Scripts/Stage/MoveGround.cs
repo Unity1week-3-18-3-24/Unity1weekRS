@@ -12,7 +12,7 @@ public class MoveGround : MonoBehaviour
 
     public Transform target; // 目的地
     public static float speed = 5.0f; // 移動速度
-    public float decelerationDistance = 1.0f; // 減速を開始する距離
+    public float decelerationDistance = 20.0f; // 減速を開始する距離
     // Start is called before the first frame update
     void Start()
     {

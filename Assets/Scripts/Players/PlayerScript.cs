@@ -22,13 +22,15 @@ public class PlayerScript : MonoBehaviour
     SpriteRenderer sp;
     public CapsuleCollider2D cp2d;
     bool isHit;
-    private float Damagecount = 3.0f;
+    private float Damagecount = 1.0f;
 
     public float fadeSpeed = 0.5f; // フェードスピード
 
     public  SpriteRenderer spriteRenderer;
     private bool fading = false;
     private bool fading2 = false;
+
+    private bool damageflag;
 
 
     void Start()
@@ -143,6 +145,22 @@ public class PlayerScript : MonoBehaviour
         {
             JumpPower = 50.0f;
         }
+
+        if(damageflag == true)
+        {
+            //BarrierScript.Damage = 40;
+            Damagecount -= Time.deltaTime;
+        }
+        if(Damagecount <= 0)
+        {
+            BarrierScript.Damage = 40;
+            damageflag = false;
+            Damagecount = 1.0f;
+        }
+        if(Damagecount >= 0)
+        {
+           
+        }
     }
 
     void One() //ジャンプ！
@@ -243,7 +261,7 @@ public class PlayerScript : MonoBehaviour
         {
             return;
         }
-        
+        Debug.Log(BarrierScript.Damage);
         StartCoroutine(_hit());
         SwitchLayer();
     }
@@ -262,16 +280,11 @@ public class PlayerScript : MonoBehaviour
         }
 
         isHit = false;
+        BarrierScript.Damage = 0;
     }
 
     void SwitchLayer()
     {
-        BarrierScript.Damage = 0;
-        Damagecount -= Time.deltaTime;
-        if(Damagecount <= 0)
-        {
-            BarrierScript.Damage = 10;
-            Damagecount = 3.0f;
-        }
+        damageflag = true;
     }
 }

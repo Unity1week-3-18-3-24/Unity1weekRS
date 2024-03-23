@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameClear : MonoBehaviour
 {
     // Start is called before the first frame update
-    private float goal = 3.0f;
+    private float goal = 1.0f;
     void Start()
     {
         
