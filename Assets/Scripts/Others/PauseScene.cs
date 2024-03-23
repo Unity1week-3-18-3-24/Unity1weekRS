@@ -5,7 +5,7 @@ using UnityEngine;
 public class PauseScene : MonoBehaviour
 {
     // Start is called before the first frame update
-    private bool flag = false; 
+    //private bool flag = false; 
     void Start()
     {
         
@@ -16,17 +16,26 @@ public class PauseScene : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Escape))
         {
-            if(flag == false)
+            if(Time.timeScale == 1)
             {
-                flag = true;
-                Time.timeScale = 0;
+                PauseOn();
             }
-
-            if(flag == true)
+            else if(Time.timeScale == 0)
             {
-                flag = false;
-                Time.timeScale = 1;
+                PauseOff();
             }
         }
+    }
+
+    void PauseOn()
+    {
+        Time.timeScale = 0;
+        Debug.Log("PauseOn");
+    }
+
+    void PauseOff()
+    {
+        Time.timeScale = 1;
+        Debug.Log("PauseOff");
     }
 }
