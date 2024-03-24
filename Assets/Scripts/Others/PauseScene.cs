@@ -63,4 +63,8 @@ public class PauseScene : MonoBehaviour
         StartScript.gametime = 0;
         pauseset.SetActive(false);
     }
+    public void Kaisi()
+    {
+        SceneManager.LoadScene("Main");
+    }
 }

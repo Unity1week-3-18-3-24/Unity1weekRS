@@ -216,6 +216,7 @@ public class PlayerScript : MonoBehaviour
     void Eight()
     {
         Debug.Log("8");
+        
     }
 
     void Nine()
