@@ -240,7 +240,7 @@ public class PlayerScript : MonoBehaviour
         {
             return;
         }
-        Debug.Log(BarrierScript.Damage);
+        //Debug.Log(BarrierScript.Damage);
         StartCoroutine(_hit());
         SwitchLayer();
     }

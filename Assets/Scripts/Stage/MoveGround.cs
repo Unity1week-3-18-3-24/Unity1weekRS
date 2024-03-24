@@ -26,6 +26,11 @@ public class MoveGround : MonoBehaviour
         {
             Scroll(); //動きます
         }
+
+        if(GameClear.flag == true)
+        {
+            Stop();
+        }
     }
     void Scroll()
     //ScrollSpeedの値を加算して移動させる
@@ -40,5 +45,10 @@ public class MoveGround : MonoBehaviour
 
         // 移動
         transform.Translate(direction.normalized * speed * Time.deltaTime, Space.World);
+    }
+
+    void Stop()
+    {
+        Debug.Log("Stop");
     }
 }

@@ -7,8 +7,8 @@ using UnityEngine.SceneManagement;
 public class GameClear : MonoBehaviour
 {
     // Start is called before the first frame update
-    //private float goal = 1.0f;
-    //private bool flag;
+    private float goal = 1.0f;
+    public static bool flag;
     void Start()
     {
         
@@ -17,14 +17,23 @@ public class GameClear : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if(flag == true)
+        {
+            goal -= Time.deltaTime;
+        }
+        if(goal<=0)
+        {
+            SceneManager.LoadScene("GameClear");
+        }
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        //SceneManager.LoadScene("GameClear");
-        //flag = true;
-        StartScript.timeflag = false;
-
+        if(other.gameObject.tag == "Player")
+        {
+            flag = true;
+            StartScript.timeflag = false;
+        }
+    
     }
 }
