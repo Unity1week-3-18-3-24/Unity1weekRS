@@ -15,5 +15,8 @@ public class restart : MonoBehaviour
     {
         
     }
-    void OnCkick
+    void OnCkick()
+    {
+        
+    }
 }
